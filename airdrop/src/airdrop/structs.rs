@@ -23,7 +23,7 @@ impl FromStr for Address {
     }
 }
 
-#[derive(Clone, Serialize, Deserialize, Debug, PartialEq)]
+#[derive(Clone, Serialize, Deserialize, Debug, PartialEq, Copy)]
 pub struct TokenAmount(u64);
 
 impl TokenAmount{
@@ -37,7 +37,7 @@ impl TokenAmount{
 }
 
 
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct Transactions{
     pub transaction_id: Option<String>,
     pub status: TransactionStatus,
@@ -67,7 +67,7 @@ impl Transactions{
     }
 }
 
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug, Clone)]
 pub enum TransactionStatus{
     Pending,
     Complete,

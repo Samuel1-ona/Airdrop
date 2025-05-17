@@ -7,3 +7,4 @@ edition = "2021"
 thiserror = "1.0.31"
 serde = { version = "1.0.138", features = ["derive"] }
 rand = "0.8"
+csv = "1.3"

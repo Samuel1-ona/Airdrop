@@ -1,6 +1,6 @@
 use thiserror::Error;
 
-#[derive(Error, Debug, serde::Serialize, serde::Deserialize)]
+#[derive(Error, Debug, serde::Serialize, serde::Deserialize , Clone)]
 pub enum AirdropError {
 #[error("Invalid Address format")]
     InvalidAddress,
