@@ -1,0 +1,9 @@
+[package]
+name = "airdrop"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+thiserror = "1.0.31"
+serde = { version = "1.0.138", features = ["derive"] }
+rand = "0.8"
