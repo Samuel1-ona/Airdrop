@@ -195,5 +195,13 @@ impl AirdropProcessor {
    Ok(all_transactions)
    }
 
+
+   pub fn transaction_history(&self) -> &[Transactions] {
+     &self.transaction
+   }
+
+
+   
+
 }
 
