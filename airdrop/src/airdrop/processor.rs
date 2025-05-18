@@ -175,6 +175,25 @@ impl AirdropProcessor {
 
    }
     
+    
+    pub fn process_batches(
+     &mut self,
+    recipients: Vec<Recipient>
+   ) -> AirdropResult<Vec<Transactions>> {
+
+    if recipients.is_empty() {
+        return Err(AirdropError::EmptyBatch);
+    }
+
+     let mut all_transactions = Vec::new();
+
+      for chuck in recipients.chunks(self.max_batch_size) {
+        let transactions = self.process_batch(chuck.to_vec())?;
+        all_transactions.extend(transactions);
+   }
+
+   Ok(all_transactions)
+   }
 
 }
 
