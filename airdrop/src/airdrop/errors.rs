@@ -6,8 +6,8 @@ pub enum AirdropError {
     InvalidAddress,
     #[error("Invalid Amount")]
     InvalidAmount,
-    #[error("Insufficient Funds Needs: {requires}, have {availble}")]
-    InsufficientFunds { requires: u64, availble: u64 },
+    #[error("Insufficient Funds Needs: {requires}, have {available}")]
+    InsufficientFunds { requires: u64,  available: u64 },
     #[error("Transaction Failed")]
     TransactionFailed,
     #[error("Batch Size Limit Exceeded")]
@@ -24,4 +24,6 @@ pub enum AirdropError {
     InvalidCSVHeader,
     #[error("Zero Amount")] 
     ZeroAmount,
+    #[error("Empty Batch")]
+    EmptyBatch,
 }

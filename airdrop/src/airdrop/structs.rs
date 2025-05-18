@@ -2,7 +2,7 @@ use crate::airdrop::errors::AirdropError;
 use serde::{Deserialize,Serialize};
 use std::str::FromStr;
 
-#[derive(Clone, Serialize, Deserialize , Debug, PartialEq)]
+#[derive(Clone, Serialize, Deserialize , Debug, PartialEq , Eq, Hash)]
 pub struct Address(String);
 
 impl Address{
@@ -24,7 +24,7 @@ impl FromStr for Address {
 }
 
 #[derive(Clone, Serialize, Deserialize, Debug, PartialEq, Copy)]
-pub struct TokenAmount(u64);
+pub struct TokenAmount(pub u64);
 
 impl TokenAmount{
     pub fn new(amount: u64) -> Self {
