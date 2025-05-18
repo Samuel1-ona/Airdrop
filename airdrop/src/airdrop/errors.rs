@@ -16,4 +16,12 @@ pub enum AirdropError {
     DuplicateAddress,
     #[error("Network Timeout")]
     NetworkTimeout,
+    #[error("Invalid CSV format")]
+    InvalidCSVFormat,
+    #[error("IO Error")]
+    IOError(String),
+    #[error("Invalid CSV Header")]
+    InvalidCSVHeader,
+    #[error("Zero Amount")] 
+    ZeroAmount,
 }

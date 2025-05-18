@@ -25,7 +25,7 @@ impl VirtualBlockchain{
         self.nounce
     }
 
-     fn send_transaction(& mut self, recipient: &Address, amount: &TokenAmount)-> AirdropResult<String>{
+     fn send_transaction(& mut self, _recipient: &Address, _amount: &TokenAmount)-> AirdropResult<String>{
 
         if rand::random::<u64>() < 10 {
             return Err(AirdropError::NetworkTimeout);
