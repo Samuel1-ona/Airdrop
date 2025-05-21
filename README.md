@@ -1,6 +1,5 @@
-Here's your content properly formatted as a Markdown (`README.md`) file:
 
-````markdown
+
 # Airdrop
 
 Airdrop is a Rust-based command-line tool designed to facilitate the distribution of ERC-20 tokens to multiple recipients efficiently. It reads recipient addresses and token amounts from a CSV file, validates the data, and processes token transfers on the Ethereum blockchain.
@@ -38,7 +37,7 @@ Clone the repository:
 ```bash
 git clone https://github.com/Samuel1-ona/Airdrop.git
 cd Airdrop
-````
+
 
 Build the project:
 
