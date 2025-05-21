@@ -1,13 +1,13 @@
 use thiserror::Error;
 
-#[derive(Error, Debug, serde::Serialize, serde::Deserialize , Clone)]
+#[derive(Error, Debug, serde::Serialize, serde::Deserialize, Clone)]
 pub enum AirdropError {
-#[error("Invalid Address format")]
+    #[error("Invalid Address format")]
     InvalidAddress,
     #[error("Invalid Amount")]
     InvalidAmount,
     #[error("Insufficient Funds Needs: {requires}, have {available}")]
-    InsufficientFunds { requires: u64,  available: u64 },
+    InsufficientFunds { requires: u64, available: u64 },
     #[error("Transaction Failed")]
     TransactionFailed,
     #[error("Batch Size Limit Exceeded")]
@@ -22,7 +22,7 @@ pub enum AirdropError {
     IOError(String),
     #[error("Invalid CSV Header")]
     InvalidCSVHeader,
-    #[error("Zero Amount")] 
+    #[error("Zero Amount")]
     ZeroAmount,
     #[error("Empty Batch")]
     EmptyBatch,

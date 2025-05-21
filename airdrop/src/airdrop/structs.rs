@@ -1,13 +1,13 @@
 use crate::airdrop::errors::AirdropError;
-use serde::{Deserialize,Serialize};
+use serde::{Deserialize, Serialize};
 use std::str::FromStr;
 
-#[derive(Clone, Serialize, Deserialize , Debug, PartialEq , Eq, Hash)]
+#[derive(Clone, Serialize, Deserialize, Debug, PartialEq, Eq, Hash)]
 pub struct Address(String);
 
-impl Address{
-    pub fn new(address: &str) ->Result<Self, AirdropError> {
-        if address.trim().is_empty(){
+impl Address {
+    pub fn new(address: &str) -> Result<Self, AirdropError> {
+        if address.trim().is_empty() {
             return Err(AirdropError::InvalidAddress);
         }
 
@@ -26,19 +26,18 @@ impl FromStr for Address {
 #[derive(Clone, Serialize, Deserialize, Debug, PartialEq, Copy)]
 pub struct TokenAmount(pub u64);
 
-impl TokenAmount{
+impl TokenAmount {
     pub fn new(amount: u64) -> Self {
         Self(amount)
     }
-   
-   pub fn get_amount(&self) -> u64 {
+
+    pub fn get_amount(&self) -> u64 {
         self.0
     }
 }
 
-
 #[derive(Serialize, Deserialize, Debug, Clone)]
-pub struct Transactions{
+pub struct Transactions {
     pub transaction_id: Option<String>,
     pub status: TransactionStatus,
     pub recipient: Address,
@@ -46,34 +45,37 @@ pub struct Transactions{
     pub transaction_time: u64,
 }
 
-impl Transactions{
+impl Transactions {
     pub fn new(recipient: Address, amount: TokenAmount) -> Self {
         Self {
             transaction_id: None,
             status: TransactionStatus::Pending,
             recipient,
             amount,
-            transaction_time: std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).unwrap().as_secs(),
+            transaction_time: std::time::SystemTime::now()
+                .duration_since(std::time::UNIX_EPOCH)
+                .unwrap()
+                .as_secs(),
         }
     }
 
-    pub fn complete(&mut self, transaction_id: String){
-        self.transaction_id =  Some(transaction_id);
+    pub fn complete(&mut self, transaction_id: String) {
+        self.transaction_id = Some(transaction_id);
         self.status = TransactionStatus::Complete;
     }
 
-    pub fn failed(&mut self, error: AirdropError){
+    pub fn failed(&mut self, error: AirdropError) {
         self.status = TransactionStatus::Failed(error);
     }
 }
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
-pub enum TransactionStatus{
+pub enum TransactionStatus {
     Pending,
     Complete,
     Failed(AirdropError),
 }
-impl TransactionStatus{
+impl TransactionStatus {
     pub fn is_complete(&self) -> bool {
         match self {
             TransactionStatus::Complete => true,
@@ -89,16 +91,13 @@ impl TransactionStatus{
     }
 }
 #[derive(Clone, Serialize, Deserialize, Debug)]
-pub struct Recipient{
+pub struct Recipient {
     pub address: Address,
     pub amount: TokenAmount,
 }
 
-impl Recipient{
+impl Recipient {
     pub fn new(address: Address, amount: TokenAmount) -> Self {
-        Self {
-            address,
-            amount,
-        }
+        Self { address, amount }
     }
 }
