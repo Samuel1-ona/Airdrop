@@ -45,7 +45,3 @@ Build the project:
 cargo build --release
 ```
 
-```
-
-Let me know if you'd like me to include sections like usage examples, testing, or license too.
-```
